@@ -41,11 +41,15 @@
   - 分類方法為「All-or-none law 全有全無律」；只有二種選擇 output = 0 or 1
   - 缺點：只用一條線做二分法，無法解決現實問題
 
+![](./pic/01-Perceptron.png)
+
 --------
   - 問題：二分法（output = 0 or 1）太武斷！
   - 解法：透過 **`sigmoid` 激活函數** 轉換（或稱 Logistic Regression）
   - 成果：使預測結果轉為**機率**（output = 0 ~ 1）的形式，  
     　　　而轉換後並不會改變線性分類的結果  
+
+![](./pic/02-Logistic_Regression.png)
 
 --------
   - 問題：線性分類不符合現實問題！
@@ -53,10 +57,14 @@
   - 成果：雖然每個神經元組合仍為線性分類，但中間經過 `sigmoid` 轉換，  
     　　　因此最後 output 是帶有非線性的元素
 
+![](./pic/03-Non-linear_classifier.png)
+
 --------
 ### 2. Multilayer Perceptron 多層感知器（MLP）
   - 是一種「**非線性**分類器」
   - 有多條神經，多個神經元 / unit / score
+
+![](./pic/04-Multilayer_Perceptron.png)
 
 --------
   - 問題：「權重（w）」如何選擇？
@@ -66,14 +74,10 @@
        - 二維空間：- dy/dx　　　　　　     --> 負斜率  
        - 三維空間：- ( ∂x/∂z, ∂y/∂z )　　 --> 梯度下降
        - 多維空間：- ( ∂Loss/∂w1, ∂Loss/∂w2, ..., ∂Loss/∂wn )
+  - 數學表示式：
+    ![](./pic/04-stochastic_gradient_descent.png)
 
-  + 數學表示式：
-    - `predict = MLP(w)`　　 　　　　 　　 -> w 為權重，如下圖中的 a, b, c　
-    - `Loss = Σ ( predict - true )^2` 　  -> 誤差是預測結果(y) 與正確結果之間距離
-    - `min(Loss) ⇒ ∂Loss/∂w = 0`　　　　-> 誤差最小即是微分等於零、梯度等於零
-    - `w_new = w_now - ∂Loss/∂w × α`　　-> 隨意選擇權重 w_now ，再逐步調整 w_new  
-      　　　　　　　　　　　　　　　　　   -> 持續往梯度下降的方向修正，直到梯度等於零  
-      　　　　　　　　　　　　　　　　　   -> α 是常數項，表示步伐大小
+![](./pic/04-MLP_stochastic_gradient_descent.png)
 
 > **誤差反向傳播**（Backpropagation）：  
   是對神經網絡中所有權重（w）計算損失函數（Loss）的梯度：∂Loss/∂w，  
@@ -83,8 +87,14 @@
   - 問題：「梯度消失（Vanishing Gradient problem）」  
     　　　 因 `sigmoid` 激活函數的微分介於 0~0.25 之間，經過多層神經網路後，  
     　　　 會使較遠的權值沒有被校正正確，權值會越調整越差，甚至是不調整
+
+![](./pic/05-vanishing_gradient_problem.png)
+
   - 解法：將中間層激活函數從 **`sigmoid`** 改為 **`relu`**  
   - 成果：`relu` 被激活後，微分 = 1；因此在誤差反向傳播時，可以正確傳遞  
+
+![](./pic/06-sigmoid.png)
+![](./pic/06-relu.png)
 
 --------
   - 問題：「激活函數（Activation Function）」如何選擇？
@@ -98,3 +108,6 @@
       - 二元分類：選擇 `tanh`　　，讓機率介於 -1 ~ 1 之間
       - 多元分類：選擇 `softmax`，讓機率相加等於 1
       - 回　　歸：不需要激活函數
+
+![](./pic/06-relu.png)
+![](./pic/07-relu_and_softmax.png)
