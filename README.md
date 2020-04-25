@@ -24,6 +24,7 @@
   - 傳統統計機率 
   - 擅長處理表格（結構化資料）  
   - 資料量需要「千」筆以上，也考慮問題難度，問題若簡單則資料量可不用太多
+  - ML 結構：資料 → 特徵擷取 (基於人類知識) → 模型 → 答案
   - 詳見：[https://github.com/yalonw/Machine_Learning](https://github.com/yalonw/Machine_Learning#ml-model-%E5%BB%BA%E7%AB%8B%E6%AD%A5%E9%A9%9F)
 
 ### **深度學習**（Deep Learning）
@@ -31,6 +32,7 @@
   - 是透過「**組合＋遺忘**」得到結果，而傳統統計無法做到「組合」
   - 擅長處理**圖片、文字、語言**等抽象型資料（非結構化資料）
   - 資料量需要「萬」筆以上，也考慮問題難度，問題困越難資料量需要越多
+  - DL 結構：資料 → ~~特徵擷取~~ (由模型自學) → 模型 → 答案
 
 </br></br>
 
@@ -52,7 +54,7 @@
 ![](./pic/02-Logistic_Regression.png)
 
 --------
-  - 問題：線性分類不符合現實問題！
+  - 問題：線性分類不符合現實問題！例如：XOR problem
   - 解法：透過**多個**神經元 / unit / score 組合  
   - 成果：雖然每個神經元組合仍為線性分類，但中間經過 `sigmoid` 轉換，  
     　　　因此最後 output 是帶有非線性的元素
@@ -63,6 +65,7 @@
 ### 2. Multilayer Perceptron 多層感知器（MLP）
   - 是一種「**非線性**分類器」
   - 有多條神經，多個神經元 / unit / score
+  - 透過「線性組合＋非線性轉換」，達到「非線性分類」
 
 ![](./pic/04-Multilayer_Perceptron.png)
 
@@ -111,3 +114,10 @@
 
 ![](./pic/06-relu.png)
 ![](./pic/07-relu_and_softmax.png)
+
+</br></br>
+
+# 範例程式
+> 請按順序學習，每個範例中，都有更深入的解釋 :blush:
+1. [MLP_1_MNIST](https://github.com/yalonw/Deep_Learning/blob/master/MLP_1_MNIST.ipynb)
+2. [MLP_2_Fashion-MNIST](https://github.com/yalonw/Deep_Learning/blob/master/MLP_2_Fashion-MNIST.ipynb)
