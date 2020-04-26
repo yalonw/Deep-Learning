@@ -37,7 +37,7 @@
 </br></br>
 
 # DL 神經網路架構
-### 1. Perceptron (單層)感知器
+### **1. Perceptron (單層)感知器**
   - 是一種「**線性**分類器」
   - 只有一個神經元 / unit / score 
   - 分類方法為「All-or-none law 全有全無律」；只有二種選擇 output = 0 or 1
@@ -62,10 +62,13 @@
 ![](./pic/03-Non-linear_classifier.png)
 
 --------
-### 2. Multilayer Perceptron 多層感知器（MLP）
+</br>
+
+### **2. Multilayer Perceptron 多層感知器（MLP）**
   - 是一種「**非線性**分類器」
   - 有多條神經，多個神經元 / unit / score
   - 透過「線性組合＋非線性轉換」，達到「非線性分類」
+  - 範例：[MLP_1_MNIST](https://github.com/yalonw/Deep_Learning/blob/master/MLP_1_MNIST.ipynb)、[MLP_2_Fashion_MNIST](https://github.com/yalonw/Deep_Learning/blob/master/MLP_2_Fashion_MNIST.ipynb)
 
 ![](./pic/04-Multilayer_Perceptron.png)
 
@@ -115,9 +118,69 @@
 ![](./pic/06-relu.png)
 ![](./pic/07-relu_and_softmax.png)
 
+> 線性分類器與非線性分類器的區別：  
+  圖左：非線性分類器  
+  圖右：線性分類器，又稱為一刀切
+  ![](https://upload.wikimedia.org/wikipedia/commons/f/fe/Kernel_Machine.svg)
+
+--------
+</br>
+
+### **3. Convolutional Neural Network 卷積神經網路（CNN）**
+- 在做「影像」辨識時，  
+  如果只用 MLP 做出基於**像素 (pixel)** 的分類預測，這樣是不行的！  
+  所以有了 CNN ，先對影像做「**特徵萃取**」，再用 MLP 做出基於**特徵**的分類預測～
+
+- **CNN = Convolution + Pooling + Flatten + MLP**
+  1. Convolution 卷積：  
+     目的：對影像進行**特徵萃取/過濾**，以得到有用的(想要的)資訊  
+     方法：改變影像通道數 (channel)   
+     注意：(1) 輸入的資料維度必須有「通道數」， shape = ( batch, height, width, **channel** )  
+     　　　(2) 圖片越大，才能做越多層卷積 
+
+     ![](./pic/11-convolution.png)
+
+     zero padding：為了不改變影像尺寸，在影像外圍加白邊
+     
+     ![](./pic/12-convolution+padding.png)
+
+  2. Pooling 池化：  
+     目的：減少影像資料量與計算量，並保留重要資訊  
+     方法：改變影像高寬 (height, width)  
+     例如：MaxPooling、AveragePooling
+
+     ![](./pic/13-polling.png)
+
+  3. Flatten：將影像轉換成一維陣列 (1D Array)
+
+- CNN 卷積神經網路的架構 = **Convolution + Pooling + Flatten + MLP** 
+
+  ![](./pic/14-convolution+padding+pooling.png)
+  ![](./pic/15-cnn.png)
+
+- 範例：[CNN_simple_CIFAR10](https://github.com/yalonw/Deep_Learning/blob/master/CNN_simple_CIFAR10.ipynb)
+
+---
+- 問題：如何選擇濾鏡 = filter = kernel map？  
+  解法：模型會自己解決 XD
+
+- 問題：卷積需要做幾層 layer？每層卷積需要幾個 filter？  
+  解法：參考大大的模型 XD  
+  例如：**ImageNet** 比賽中，獲獎的演算法～  
+  　　　(1) AlexNet：紀念版模型  
+  　　　(2) VGG 系列：經典版模型  
+  　　　(3) ResNet 系列：特色是使用更多層 layer  
+  　　　(4) Inception 系列：特色是使用多種不同大小的 Kernel map (filter)  
+
+  ![參考來源：https://towardsdatascience.com/neural-network-architectures-156e5bad51ba](https://miro.medium.com/max/1400/1*kfpO_fJ4bc92sffY4bxnSA.jpeg)
+  > [**ImageNet**](http://www.image-net.org) 是 Hinton 和他的學生建立的大型圖像資料庫。  
+    上圖中，縱軸的 Top-1 Accuracy，表示只預測一次且正確的機率。
+  
+
 </br></br>
 
 # 範例程式
-> 請按順序學習，每個範例中，都有更深入的解釋 :blush:
-1. [MLP_1_MNIST](https://github.com/yalonw/Deep_Learning/blob/master/MLP_1_MNIST.ipynb)
-2. [MLP_2_Fashion-MNIST](https://github.com/yalonw/Deep_Learning/blob/master/MLP_2_Fashion-MNIST.ipynb)
+> 請按順序學習，每個範例中都有更深入的解釋 :blush:
+1. MLP-1：[MNIST](https://github.com/yalonw/Deep_Learning/blob/master/MLP_1_MNIST.ipynb)
+2. MLP-2：[Fashion_MNIST](https://github.com/yalonw/Deep_Learning/blob/master/MLP_2_Fashion_MNIST.ipynb)
+3. CNN-simple：[CIFAR10](https://github.com/yalonw/Deep_Learning/blob/master/CNN_simple_CIFAR10.ipynb)
