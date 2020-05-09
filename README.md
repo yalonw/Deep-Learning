@@ -189,6 +189,51 @@
 
 - 範例：[Transfer_dog_cat](https://github.com/yalonw/Deep_Learning/blob/master/Transfer_dog_cat.ipynb)
 
+--------
+</br>
+
+### **5. Word Embedding** 
+- **Embedding** 用於 **語意/字詞** 的特徵抓取，是自然語言處理（NLP）的一種技術
+- 簡言之，利用降維的方法把「**詞**」轉換成「**詞向量**」，再透過計算「詞向量」之間的「**夾角餘弦值 cosine （cos距離）**」，得出「詞」之間的相似性；也就是在向量空間上比較靠近的詞向量，即可推測為相似詞
+- 不僅可以用「詞向量」來表示「詞」，也可以用「字向量」或「句向量」來表示「字」和「句子」
+
++ 以下是與 Embedding / NLP 相關的套件，可藉此做「語意/字詞」的 Transfer Learning 
+  1. **word2vec (W2V) | Google**  
+     - 利用上下文意的詞向量，預測下一個詞
+     - 例如：目標是「今天午餐”很”好吃耶」，input為「今天、午餐、好吃、耶」，output為「很」  
+       　　　透過「cos距離」找到彼此最相似的詞向量，  
+       　　　cos0=1 完全相似、cos90=0 不相干、cos180=-1 完全相反     
+     - 注意：這裡的「相似」並非指同義詞，而是指詞向量的相似，  
+       　　　例如「我OOO你」，只要可以填入 OOO 的詞都稱為相似，  
+       　　　好比說「我”喜歡”你」和「我”討厭”你」，此時「喜歡」和「討厭」就為**相似**(的詞量)
+     - 缺點：OOV（Out-Of Vocabulary）問題
+
+  2. **Fasttext | Facebook**  
+     - 同樣是利用上下文意的詞向量，但設法解決 OOV 問題，透過拆字用「**部分**」去推測答案
+     - 例如：中文從「詞向量」改用「字向量」、英文用「字根、字首」
+     - 缺點：因為是透過上下文意推測，有順序性，因此必須序列運算，造成低效率
+
+  3. **BERT | Google**  
+     - 同樣有上下文的語意推測，但另外有「主題式」的語意推測；並且可以平行運算，解決效率問題
+
+  4. **GPT-2 | OpenAI**  
+     - 是一種無監督式的語言**生成式模型（Generative model）**
+
++ 範例：[Embedding_IMDb_sentiment](https://github.com/yalonw/Deep_Learning/blob/master/Embedding_IMDb_sentiment.ipynb)
+
+--------
+</br>
+
+### **6. Recurrent Neural Network 遞迴神經網路（RNN）**
+- RNN 用於有「**時間序列**」的特徵抓取 
+- 為了解決 RNN **記憶削減（short-term memory）** 的問題，因此有了改良版：
+  - Long Short Term Memory（LSTM）
+  - Gate Recurrent Unit（GRU）  
+- 詳細圖解說明：[Illustrated Guide to LSTM’s and GRU’s: A step by step explanation](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21)
+
+![資料來源：http://dprogrammer.org/rnn-lstm-gru](./pic/21-RNN-LSTM-GRU.png)
+
+
 </br></br>
 
 # 範例程式
@@ -197,3 +242,4 @@
 2. MLP-2：[Fashion_MNIST](https://github.com/yalonw/Deep_Learning/blob/master/MLP_2_Fashion_MNIST.ipynb)
 3. CNN-simple：[CIFAR10](https://github.com/yalonw/Deep_Learning/blob/master/CNN_simple_CIFAR10.ipynb)
 4. Transfer Learning：[dog_cat](https://github.com/yalonw/Deep_Learning/blob/master/Transfer_dog_cat.ipynb)
+5. Word Embedding：[IMDb_sentiment](https://github.com/yalonw/Deep_Learning/blob/master/Embedding_IMDb_sentiment.ipynb)
