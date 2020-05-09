@@ -175,7 +175,19 @@
   ![參考來源：https://towardsdatascience.com/neural-network-architectures-156e5bad51ba](https://miro.medium.com/max/1400/1*kfpO_fJ4bc92sffY4bxnSA.jpeg)
   > [**ImageNet**](http://www.image-net.org) 是 Hinton 和他的學生建立的大型圖像資料庫。  
     上圖中，縱軸的 Top-1 Accuracy，表示只預測一次且正確的機率。
-  
+
+--------
+</br>
+
+### **4. Transfer Learning 遷移學習（TL）**  
+- 簡言之，利用已經訓練好的模型（model）和權重/參數（weight / parameter）做一個新模型。
+  - 一般而言，會從頭開始架構自己的模型，並訓練自己的分類器　　（= 好孩子自己寫作業）
+  - 偷懶一點，會「參考」別人的模型架構，再訓練自己的分類器　　（= 抄算式但自己作答）
+  - 遷移學習，則是「直接使用」別人訓練好的模型和權重，再進行分類　（= 直接複印一份）
+  - 注意！以上指的模型架構是指 CNN 那段，MLP 都需要接上自己的分類：
+    ~~CNN~~ → MLP → Classifier    
+
+- 範例：[Transfer_dog_cat](https://github.com/yalonw/Deep_Learning/blob/master/Transfer_dog_cat.ipynb)
 
 </br></br>
 
@@ -184,3 +196,4 @@
 1. MLP-1：[MNIST](https://github.com/yalonw/Deep_Learning/blob/master/MLP_1_MNIST.ipynb)
 2. MLP-2：[Fashion_MNIST](https://github.com/yalonw/Deep_Learning/blob/master/MLP_2_Fashion_MNIST.ipynb)
 3. CNN-simple：[CIFAR10](https://github.com/yalonw/Deep_Learning/blob/master/CNN_simple_CIFAR10.ipynb)
+4. Transfer Learning：[dog_cat](https://github.com/yalonw/Deep_Learning/blob/master/Transfer_dog_cat.ipynb)
